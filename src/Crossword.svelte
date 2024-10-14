@@ -62,6 +62,7 @@
   }
 
   function onPause() {
+    if (revealed) return true;
     clearInterval(interval);
     oldElapsed = timeElapsed;
     isPaused = true;
