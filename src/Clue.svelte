@@ -5,6 +5,7 @@
   export let clue;
   export let custom;
   export let isFilled;
+  export let isBlurred;
   export let isNumberFocused = false;
   export let isDirectionFocused = false;
   export let isDisableHighlight = false;
@@ -22,6 +23,7 @@
     class:is-number-focused="{isNumberFocused}"
     class:is-direction-focused="{isDirectionFocused}"
     class:is-filled="{isFilled}"
+    class:is-blurred="{isBlurred}"
     on:click="{onFocus}">
     <strong>{number}</strong>
     {clue}
@@ -65,5 +67,9 @@
   }
   .is-filled {
     opacity: 0.5;
+  }
+
+  .is-blurred {
+    filter: blur(4px);
   }
 </style>

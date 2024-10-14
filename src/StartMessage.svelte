@@ -1,36 +1,34 @@
 <script>
   import { fade } from "svelte/transition";
-  import Confetti from "./Confetti.svelte";
 
-  export let showConfetti = true;
+  export let isStarted;
 
   let isOpen = true;
-</script>
 
+  function close() {
+    isOpen = false;
+    isStarted = true;
+  }
+</script>
+  
 {#if isOpen}
-  <div class="completed" transition:fade="{{ y: 20 }}">
+  <div class="start" transition:fade="{{ y: 20 }}">
     <div class="content">
       <div class="message">
         <slot />
       </div>
 
-      <button on:click="{() => (isOpen = false)}">View puzzle</button>
+      <button on:click="{close}">Start puzzle</button>
     </div>
-
-    {#if showConfetti}
-      <div class="confetti">
-        <Confetti />
-      </div>
-    {/if}
   </div>
   <div
     class="curtain"
     transition:fade="{{ duration: 250 }}"
-    on:click="{() => (isOpen = false)}"/>
+    on:click="{close}"/>
 {/if}
 
 <style>
-  .completed {
+  .start {
     position: absolute;
     top: min(50%, 15em);
     left: 50%;
@@ -82,11 +80,5 @@
   .message {
     margin-bottom: 1em;
   }
-
-  .confetti {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 </style>
+  

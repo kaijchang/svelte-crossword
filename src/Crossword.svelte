@@ -4,6 +4,7 @@
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
+  import StartMessage from "./StartMessage.svelte";
   import createClues from "./helpers/createClues.js";
   import createCells from "./helpers/createCells.js";
   import validateClues from "./helpers/validateClues.js";
@@ -17,6 +18,7 @@
   export let breakpoint = 720;
   export let revealed = false;
   export let disableHighlight = false;
+  export let showStartMessage = true;
   export let showCompleteMessage = true;
   export let showConfetti = true;
   export let showKeyboard;
@@ -25,6 +27,7 @@
   let width = 0;
   let focusedDirection = "across";
   let focusedCellIndex = 0;
+  let isStarted = !showStartMessage;
   let isRevealing = false;
   let isLoaded = false;
   let isChecking = false;
@@ -108,7 +111,7 @@
   }
 
   function onCheck() {
-    isChecking = true;
+    isChecking = !isChecking;
   }
 
   function startReveal() {
@@ -142,29 +145,38 @@
 
     <div class="play" class:stacked class:is-loaded="{isLoaded}">
       <Clues
-        clues="{clues}"
-        cellIndexMap="{cellIndexMap}"
-        stacked="{stacked}"
-        isDisableHighlight="{isDisableHighlight}"
-        isLoaded="{isLoaded}"
+        {clues}
+        {cellIndexMap}
+        {stacked}
+        {isDisableHighlight}
+        {isLoaded}
+        {isStarted}
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />
       <Puzzle
-        clues="{clues}"
-        focusedCell="{focusedCell}"
-        isRevealing="{isRevealing}"
-        isChecking="{isChecking}"
-        isDisableHighlight="{isDisableHighlight}"
-        revealDuration="{revealDuration}"
-        showKeyboard="{showKeyboard}"
-        stacked="{stacked}"
-        isLoaded="{isLoaded}"
-        keyboardStyle="{keyboardStyle}"
+        {clues}
+        {focusedCell}
+        {isRevealing}
+        {isChecking}
+        {isDisableHighlight}
+        {revealDuration}
+        {showKeyboard}
+        {stacked}
+        {isLoaded}
+        {keyboardStyle}
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />
     </div>
+
+    {#if !isStarted && showStartMessage}
+      <StartMessage bind:isStarted>
+        <slot name="message">
+          <h3>Ready to begin?</h3>
+        </slot>
+      </StartMessage>
+    {/if}
 
     {#if isComplete && !isRevealing && showCompleteMessage}
       <CompletedMessage showConfetti="{showConfetti}">

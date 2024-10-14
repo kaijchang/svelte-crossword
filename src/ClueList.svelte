@@ -7,6 +7,7 @@
   export let isDirectionFocused;
   export let onClueFocus;
   export let isDisableHighlight;
+  export let isStarted;
 </script>
 
 <p>{direction}</p>
@@ -21,6 +22,7 @@
         isNumberFocused="{focusedClueNumbers[direction] === clue.number}"
         isDirectionFocused="{isDirectionFocused}"
         isDisableHighlight="{isDisableHighlight}"
+        isBlurred="{!isStarted}"
         onFocus="{() => onClueFocus(clue)}" />
     {/each}
   </ul>
