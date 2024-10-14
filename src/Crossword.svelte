@@ -129,6 +129,7 @@
     }));
     timeElapsed = 0;
     oldElapsed = 0;
+    startTime = Date.now();
     isRunning = true;
   }
 

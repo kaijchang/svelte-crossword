@@ -4887,7 +4887,7 @@ var app = (function () {
     	onCheck: /*onCheck*/ ctx[27]
     });
 
-    // (166:0) {#if validated}
+    // (167:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -5210,7 +5210,7 @@ var app = (function () {
     	};
     }
 
-    // (177:16)        
+    // (178:16)        
     function fallback_block_2(ctx) {
     	let toolbar;
     	let current;
@@ -5256,7 +5256,7 @@ var app = (function () {
     	};
     }
 
-    // (209:4) {#if !isRunning && !isComplete}
+    // (210:4) {#if !isRunning && !isComplete}
     function create_if_block_2(ctx) {
     	let startmessage;
     	let updating_isRunning;
@@ -5319,7 +5319,7 @@ var app = (function () {
     	};
     }
 
-    // (211:29)            
+    // (212:29)            
     function fallback_block_1(ctx) {
     	let h3;
 
@@ -5360,7 +5360,7 @@ var app = (function () {
     	};
     }
 
-    // (210:6) <StartMessage bind:isRunning>
+    // (211:6) <StartMessage bind:isRunning>
     function create_default_slot_1(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[35].message;
@@ -5407,7 +5407,7 @@ var app = (function () {
     	};
     }
 
-    // (217:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (218:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5456,7 +5456,7 @@ var app = (function () {
     	};
     }
 
-    // (219:29)            
+    // (220:29)            
     function fallback_block(ctx) {
     	let h3;
     	let t0;
@@ -5499,7 +5499,7 @@ var app = (function () {
     	};
     }
 
-    // (218:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (219:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[35].message;
@@ -5700,6 +5700,7 @@ var app = (function () {
     		$$invalidate(17, cells = cells.map(cell => ({ ...cell, value: "" })));
     		$$invalidate(14, timeElapsed = 0);
     		oldElapsed = 0;
+    		startTime = Date.now();
     		$$invalidate(9, isRunning = true);
     	}
 
