@@ -5,6 +5,7 @@
   import Clues from "./Clues.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
   import StartMessage from "./StartMessage.svelte";
+  import formatTime from "./helpers/formatTime";
   import createClues from "./helpers/createClues.js";
   import createCells from "./helpers/createCells.js";
   import validateClues from "./helpers/validateClues.js";
@@ -27,7 +28,7 @@
   let width = 0;
   let focusedDirection = "across";
   let focusedCellIndex = 0;
-  let isStarted = !showStartMessage;
+  let isRunning = !showStartMessage;
   let isPaused = false;
   let isRevealing = false;
   let isLoaded = false;
@@ -60,6 +61,13 @@
     }, 1000);
   }
 
+  function onPause() {
+    clearInterval(interval);
+    oldElapsed = timeElapsed;
+    isPaused = true;
+    isRunning = false;
+  }
+
   $: data, onDataUpdate();
   $: focusedCell = cells[focusedCellIndex] || {};
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
@@ -71,18 +79,17 @@
   $: cells, (revealed = !clues.filter((d) => !d.isCorrect).length);
   $: stacked = width < breakpoint;
   $: inlineStyles = themeStyles[theme];
-  $: if (isStarted) countUp();
+  $: if (isRunning) {
+    countUp();
+  }
+  $: if (isComplete) {
+    clearInterval(interval);
+    isRunning = false;
+  };
 
   onMount(() => {
     isLoaded = true;
   });
-
-  function onPause() {
-    clearInterval(interval);
-    oldElapsed = timeElapsed;
-    isPaused = true;
-    isStarted = false;
-  }
 
   function checkClues() {
     return clues.map((d) => {
@@ -119,6 +126,8 @@
       ...cell,
       value: "",
     }));
+    timeElapsed = 0;
+    isRunning = true;
   }
 
   function onReveal() {
@@ -174,7 +183,7 @@
         {stacked}
         {isDisableHighlight}
         {isLoaded}
-        {isStarted}
+        shouldShowClues={isRunning || isComplete}
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />
@@ -195,8 +204,8 @@
         bind:focusedDirection />
     </div>
 
-    {#if !isStarted}
-      <StartMessage bind:isStarted>
+    {#if !isRunning && !isComplete}
+      <StartMessage bind:isRunning>
         <slot name="message">
           <h3>{isPaused ? "Your puzzle is paused." : "Ready?"}</h3>
         </slot>
@@ -206,7 +215,7 @@
     {#if isComplete && !isRevealing && showCompleteMessage}
       <CompletedMessage showConfetti="{showConfetti}">
         <slot name="message">
-          <h3>You solved it!</h3>
+          <h3>You solved it in {formatTime(timeElapsed)}!</h3>
         </slot>
       </CompletedMessage>
     {/if}

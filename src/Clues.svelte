@@ -10,7 +10,7 @@
   export let stacked;
   export let isDisableHighlight;
   export let isLoaded;
-  export let isStarted;
+  export let shouldShowClues;
 
   $: focusedClueNumbers = focusedCell.clueNumbers || {};
   $: currentClue =
@@ -47,7 +47,7 @@
         clues="{clues.filter(d => d.direction === direction)}"
         isDirectionFocused="{focusedDirection === direction}"
         {isDisableHighlight}
-        {isStarted}
+        {shouldShowClues}
         {onClueFocus} />
     {/each}
   </div>

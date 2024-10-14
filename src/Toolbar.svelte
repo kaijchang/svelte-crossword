@@ -1,22 +1,15 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import formatTime from "./helpers/formatTime";
   const dispatch = createEventDispatcher();
 
   export let timeElapsed;
   export let actions = ["pause", "clear", "reveal", "check"];
-
-  function pad (s, len) {
-    return s.padStart(len, "0");
-  }
-
-  $: h = Math.floor(timeElapsed / 1000 / 3600);
-  $: m = Math.floor((timeElapsed / 1000 % 3600) / 60);
-  $: s = Math.floor(timeElapsed / 1000 % 60);
 </script>
 
 <div class="toolbar">
   <h3><b>
-    {h > 0 ? h.toString().concat(":") : ""}{pad(m.toString(), h > 0 ? 2 : 1).concat(":")}{pad(s.toString(), 2)}
+    {formatTime(timeElapsed)}
   </b></h3>
   <div>
     {#each actions as action}

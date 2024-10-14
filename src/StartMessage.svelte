@@ -1,13 +1,13 @@
 <script>
   import { fade } from "svelte/transition";
 
-  export let isStarted;
+  export let isRunning;
 
   let isOpen = true;
 
   function close() {
     isOpen = false;
-    isStarted = true;
+    isRunning = true;
   }
 </script>
   
