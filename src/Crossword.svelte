@@ -128,6 +128,7 @@
       value: "",
     }));
     timeElapsed = 0;
+    oldElapsed = 0;
     isRunning = true;
   }
 
