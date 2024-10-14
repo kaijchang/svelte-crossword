@@ -195,6 +195,7 @@
         {focusedCell}
         {isRevealing}
         {isChecking}
+        {isRunning}
         {isDisableHighlight}
         {revealDuration}
         {showKeyboard}

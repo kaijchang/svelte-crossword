@@ -15,6 +15,7 @@
   export let isRevealing;
   export let isComplete;
   export let isChecking;
+  export let isRunning;
   export let isDisableHighlight;
   export let stacked;
   export let revealDuration = 0;
@@ -212,6 +213,7 @@
         changeDelay="{isRevealing ? (revealDuration / cells.length) * index : 0}"
         isRevealing="{isRevealing}"
         isChecking="{isChecking}"
+        isRunning="{isRunning}"
         isFocused="{focusedCellIndex == index && !isDisableHighlight}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index) && !isDisableHighlight}"
         onFocusCell="{onFocusCell}"

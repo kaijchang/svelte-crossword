@@ -10,6 +10,7 @@
   export let isRevealing = false;
   export let isChecking = false;
   export let isFocused = false;
+  export let isRunning = false;
   export let isSecondarilyFocused = false;
   export let onFocusCell = () => {};
   export let onCellUpdate = () => {};
@@ -21,6 +22,7 @@
   let element;
 
   $: isFocused, onFocusSelf();
+  $: isRunning, onFocusSelf();
   $: correct = answer === value;
   $: showCheck = isChecking && value;
 
