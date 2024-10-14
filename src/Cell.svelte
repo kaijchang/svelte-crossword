@@ -37,7 +37,7 @@
     if (e.ctrlKey) return;
     if (e.altKey) return;
 
-    if (e.key === "Tab") {
+    if (e.key === "Tab" || e.key === "Enter") {
       onFocusClueDiff(e.shiftKey ? -1 : 1);
       e.preventDefault();
       e.stopPropagation();
