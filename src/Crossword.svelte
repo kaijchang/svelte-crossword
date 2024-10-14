@@ -12,7 +12,7 @@
   import themeStyles from "./helpers/themeStyles.js";
 
   export let data = [];
-  export let actions = ["clear", "reveal", "check"];
+  export let actions = ["pause", "clear", "reveal", "check"];
   export let theme = "classic";
   export let revealDuration = 1000;
   export let breakpoint = 720;
@@ -28,10 +28,15 @@
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isStarted = !showStartMessage;
+  let isPaused = false;
   let isRevealing = false;
   let isLoaded = false;
   let isChecking = false;
   let revealTimeout;
+  let timeElapsed = 0;
+  let startTime = Date.now();
+  let oldElapsed = 0;
+  let interval;
   let clueCompletion;
 
   let originalClues = [];
@@ -47,6 +52,14 @@
     reset();
   };
 
+  function countUp() {
+    startTime = Date.now();
+
+    interval = setInterval(() => {
+      timeElapsed = Date.now() - startTime + oldElapsed;
+    }, 1000);
+  }
+
   $: data, onDataUpdate();
   $: focusedCell = cells[focusedCellIndex] || {};
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
@@ -58,10 +71,18 @@
   $: cells, (revealed = !clues.filter((d) => !d.isCorrect).length);
   $: stacked = width < breakpoint;
   $: inlineStyles = themeStyles[theme];
+  $: if (isStarted) countUp();
 
   onMount(() => {
     isLoaded = true;
   });
+
+  function onPause() {
+    clearInterval(interval);
+    oldElapsed = timeElapsed;
+    isPaused = true;
+    isStarted = false;
+  }
 
   function checkClues() {
     return clues.map((d) => {
@@ -124,7 +145,8 @@
   }
 
   function onToolbarEvent({ detail }) {
-    if (detail === "clear") onClear();
+    if (detail === "pause") onPause();
+    else if (detail === "clear") onClear();
     else if (detail === "reveal") onReveal();
     else if (detail === "check") onCheck();
   }
@@ -137,10 +159,12 @@
     style="{inlineStyles}">
     <slot
       name="toolbar"
-      onClear="{onClear}"
-      onReveal="{onReveal}"
-      onCheck="{onCheck}">
-      <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
+      {timeElapsed}
+      {onPause}
+      {onClear}
+      {onReveal}
+      {onCheck}>
+      <Toolbar {timeElapsed} {actions} on:event="{onToolbarEvent}" />
     </slot>
 
     <div class="play" class:stacked class:is-loaded="{isLoaded}">
@@ -164,16 +188,17 @@
         {showKeyboard}
         {stacked}
         {isLoaded}
+        {isComplete}
         {keyboardStyle}
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />
     </div>
 
-    {#if !isStarted && showStartMessage}
+    {#if !isStarted}
       <StartMessage bind:isStarted>
         <slot name="message">
-          <h3>Ready to begin?</h3>
+          <h3>{isPaused ? "Your puzzle is paused." : "Ready?"}</h3>
         </slot>
       </StartMessage>
     {/if}

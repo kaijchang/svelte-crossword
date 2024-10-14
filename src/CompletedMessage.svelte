@@ -14,7 +14,7 @@
         <slot />
       </div>
 
-      <button on:click="{() => (isOpen = false)}">View puzzle</button>
+      <button on:click="{() => (isOpen = false)}">Admire puzzle</button>
     </div>
 
     {#if showConfetti}

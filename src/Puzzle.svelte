@@ -13,6 +13,7 @@
   export let focusedCellIndex;
   export let focusedCell;
   export let isRevealing;
+  export let isComplete;
   export let isChecking;
   export let isDisableHighlight;
   export let stacked;
@@ -54,6 +55,8 @@
   }
 
   function onCellUpdate(index, newValue, diff = 1, doReplaceFilledCells) {
+    if (isComplete) return;
+
     doReplaceFilledCells = doReplaceFilledCells || !!cells[index].value;
 
     const dimension = focusedDirection == "across" ? "x" : "y";

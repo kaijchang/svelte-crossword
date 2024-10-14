@@ -2,27 +2,37 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  export let actions = ["clear", "reveal", "check"];
+  export let timeElapsed;
+  export let actions = ["pause", "clear", "reveal", "check"];
+
+  function pad (s, len) {
+    return s.padStart(len, "0");
+  }
+
+  $: h = Math.floor(timeElapsed / 1000 / 3600);
+  $: m = Math.floor((timeElapsed / 1000 % 3600) / 60);
+  $: s = Math.floor(timeElapsed / 1000 % 60);
 </script>
 
 <div class="toolbar">
-  {#each actions as action}
-    {#if action === 'clear'}
-      <button on:click="{() => dispatch('event', 'clear')}">Clear</button>
-    {:else if action === 'reveal'}
-      <button on:click="{() => dispatch('event', 'reveal')}">Reveal</button>
-    {:else if action === 'check'}
-      <button on:click="{() => dispatch('event', 'check')}">Check</button>
-    {/if}
-  {/each}
+  <h3><b>
+    {h > 0 ? h.toString().concat(":") : ""}{pad(m.toString(), h > 0 ? 2 : 1).concat(":")}{pad(s.toString(), 2)}
+  </b></h3>
+  <div>
+    {#each actions as action}
+      <button on:click="{() => dispatch('event', action)}">
+        {action.charAt(0).toUpperCase().concat(action.slice(1))}
+      </button>
+    {/each}
+  </div>
 </div>
 
 <style>
   .toolbar {
     margin-bottom: 1em;
-    padding: 1em 0;
+    padding: 0.5em 1em;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     font-family: var(--font);
     font-size: 0.85em;
     background-color: transparent;
