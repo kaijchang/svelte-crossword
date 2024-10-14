@@ -5717,7 +5717,7 @@ var app = (function () {
     		$$invalidate(14, timeElapsed = 0);
     		oldElapsed = 0;
     		startTime = Date.now();
-    		$$invalidate(9, isRunning = true);
+    		$$invalidate(9, isRunning = !showStartMessage);
     	}
 
     	function onReveal() {
