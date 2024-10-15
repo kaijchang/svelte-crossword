@@ -1,4 +1,4 @@
-export default function scrollTO (node, isFocused) {
+export default function scrollTo (node, isFocused) {
   return {
     update(newIsFocused) {
       isFocused = newIsFocused;

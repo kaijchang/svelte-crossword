@@ -3027,7 +3027,7 @@ var app = (function () {
     	}
     }
 
-    function scrollTO (node, isFocused) {
+    function scrollTo (node, isFocused) {
       return {
         update(newIsFocused) {
           isFocused = newIsFocused;
@@ -3108,7 +3108,7 @@ var app = (function () {
     					listen(button, "click", function () {
     						if (is_function(/*onFocus*/ ctx[8])) /*onFocus*/ ctx[8].apply(this, arguments);
     					}),
-    					action_destroyer(scrollTo_action = scrollTO.call(null, li, /*isFocused*/ ctx[10]))
+    					action_destroyer(scrollTo_action = scrollTo.call(null, li, /*isFocused*/ ctx[10]))
     				];
 
     				mounted = true;
