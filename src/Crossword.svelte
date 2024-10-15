@@ -90,6 +90,9 @@
 
   onMount(() => {
     isLoaded = true;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) onPause();
+    });
   });
 
   function checkClues() {

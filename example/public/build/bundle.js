@@ -4516,11 +4516,11 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div0, "class", "message svelte-1vlhcvg");
-    			attr(button, "class", "svelte-1vlhcvg");
-    			attr(div1, "class", "content svelte-1vlhcvg");
-    			attr(div2, "class", "start svelte-1vlhcvg");
-    			attr(div3, "class", "curtain svelte-1vlhcvg");
+    			attr(div0, "class", "message svelte-77b58b");
+    			attr(button, "class", "svelte-77b58b");
+    			attr(div1, "class", "content svelte-77b58b");
+    			attr(div2, "class", "start svelte-77b58b");
+    			attr(div3, "class", "curtain svelte-77b58b");
     		},
     		m(target, anchor) {
     			insert(target, div2, anchor);
@@ -4901,7 +4901,7 @@ var app = (function () {
     	onCheck: /*onCheck*/ ctx[27]
     });
 
-    // (167:0) {#if validated}
+    // (170:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -5226,7 +5226,7 @@ var app = (function () {
     	};
     }
 
-    // (178:16)        
+    // (181:16)        
     function fallback_block_2(ctx) {
     	let toolbar;
     	let current;
@@ -5272,7 +5272,7 @@ var app = (function () {
     	};
     }
 
-    // (211:4) {#if !isRunning && !isComplete}
+    // (214:4) {#if !isRunning && !isComplete}
     function create_if_block_2(ctx) {
     	let startmessage;
     	let updating_isRunning;
@@ -5335,7 +5335,7 @@ var app = (function () {
     	};
     }
 
-    // (213:29)            
+    // (216:29)            
     function fallback_block_1(ctx) {
     	let h3;
 
@@ -5376,7 +5376,7 @@ var app = (function () {
     	};
     }
 
-    // (212:6) <StartMessage bind:isRunning>
+    // (215:6) <StartMessage bind:isRunning>
     function create_default_slot_1(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[35].message;
@@ -5423,7 +5423,7 @@ var app = (function () {
     	};
     }
 
-    // (219:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (222:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5472,7 +5472,7 @@ var app = (function () {
     	};
     }
 
-    // (221:29)            
+    // (224:29)            
     function fallback_block(ctx) {
     	let h3;
     	let t0;
@@ -5515,7 +5515,7 @@ var app = (function () {
     	};
     }
 
-    // (220:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (223:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[35].message;
@@ -5684,6 +5684,10 @@ var app = (function () {
 
     	onMount(() => {
     		$$invalidate(12, isLoaded = true);
+
+    		document.addEventListener("visibilitychange", () => {
+    			if (document.hidden) onPause();
+    		});
     	});
 
     	function checkClues() {

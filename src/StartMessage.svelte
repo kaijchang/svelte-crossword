@@ -79,6 +79,7 @@
 
   .message {
     margin-bottom: 1em;
+    text-align: center;
   }
 </style>
   
