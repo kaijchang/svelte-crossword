@@ -31,7 +31,7 @@
 <style>
   .list {
     position: relative;
-    max-height: 45vh;
+    max-height: 37.5vh;
     margin-bottom: 2em;
     overflow: auto;
   }

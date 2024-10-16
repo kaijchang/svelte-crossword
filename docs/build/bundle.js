@@ -3356,9 +3356,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(p, "class", "svelte-16s2wyn");
-    			attr(ul, "class", "svelte-16s2wyn");
-    			attr(div, "class", "list svelte-16s2wyn");
+    			attr(p, "class", "svelte-1fbvob");
+    			attr(ul, "class", "svelte-1fbvob");
+    			attr(div, "class", "list svelte-1fbvob");
     		},
     		m(target, anchor) {
     			insert(target, p, anchor);
