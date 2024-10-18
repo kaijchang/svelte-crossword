@@ -37,6 +37,7 @@
     }
 
     if (e.ctrlKey) return;
+    if (e.metaKey) return;
     if (e.altKey) return;
 
     if (e.key === "Tab" || e.key === "Enter") {

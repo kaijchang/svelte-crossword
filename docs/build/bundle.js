@@ -1962,7 +1962,7 @@ var app = (function () {
     	};
     }
 
-    // (114:2) {#if value}
+    // (115:2) {#if value}
     function create_if_block$1(ctx) {
     	let text_1;
     	let t;
@@ -2290,6 +2290,7 @@ var app = (function () {
     		}
 
     		if (e.ctrlKey) return;
+    		if (e.metaKey) return;
     		if (e.altKey) return;
 
     		if (e.key === "Tab" || e.key === "Enter") {
