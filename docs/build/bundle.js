@@ -4901,7 +4901,7 @@ var app = (function () {
     	onCheck: /*onCheck*/ ctx[27]
     });
 
-    // (170:0) {#if validated}
+    // (192:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -4919,20 +4919,20 @@ var app = (function () {
     	let t3;
     	let article_resize_listener;
     	let current;
-    	const toolbar_slot_template = /*#slots*/ ctx[35].toolbar;
-    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[44], get_toolbar_slot_context);
+    	const toolbar_slot_template = /*#slots*/ ctx[36].toolbar;
+    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[45], get_toolbar_slot_context);
     	const toolbar_slot_or_fallback = toolbar_slot || fallback_block_2(ctx);
 
     	function clues_1_focusedCellIndex_binding(value) {
-    		/*clues_1_focusedCellIndex_binding*/ ctx[36].call(null, value);
+    		/*clues_1_focusedCellIndex_binding*/ ctx[37].call(null, value);
     	}
 
     	function clues_1_focusedCell_binding(value) {
-    		/*clues_1_focusedCell_binding*/ ctx[37].call(null, value);
+    		/*clues_1_focusedCell_binding*/ ctx[38].call(null, value);
     	}
 
     	function clues_1_focusedDirection_binding(value) {
-    		/*clues_1_focusedDirection_binding*/ ctx[38].call(null, value);
+    		/*clues_1_focusedDirection_binding*/ ctx[39].call(null, value);
     	}
 
     	let clues_1_props = {
@@ -4962,15 +4962,15 @@ var app = (function () {
     	binding_callbacks.push(() => bind(clues_1, "focusedDirection", clues_1_focusedDirection_binding));
 
     	function puzzle_cells_binding(value) {
-    		/*puzzle_cells_binding*/ ctx[39].call(null, value);
+    		/*puzzle_cells_binding*/ ctx[40].call(null, value);
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
-    		/*puzzle_focusedCellIndex_binding*/ ctx[40].call(null, value);
+    		/*puzzle_focusedCellIndex_binding*/ ctx[41].call(null, value);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
-    		/*puzzle_focusedDirection_binding*/ ctx[41].call(null, value);
+    		/*puzzle_focusedDirection_binding*/ ctx[42].call(null, value);
     	}
 
     	let puzzle_props = {
@@ -5046,7 +5046,7 @@ var app = (function () {
     			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[12]);
     			attr(article, "class", "svelte-crossword svelte-186p9qm");
     			attr(article, "style", /*inlineStyles*/ ctx[23]);
-    			add_render_callback(() => /*article_elementresize_handler*/ ctx[43].call(article));
+    			add_render_callback(() => /*article_elementresize_handler*/ ctx[44].call(article));
     		},
     		m(target, anchor) {
     			insert(target, article, anchor);
@@ -5064,13 +5064,13 @@ var app = (function () {
     			if (if_block0) if_block0.m(article, null);
     			append(article, t3);
     			if (if_block1) if_block1.m(article, null);
-    			article_resize_listener = add_resize_listener(article, /*article_elementresize_handler*/ ctx[43].bind(article));
+    			article_resize_listener = add_resize_listener(article, /*article_elementresize_handler*/ ctx[44].bind(article));
     			current = true;
     		},
     		p(ctx, dirty) {
     			if (toolbar_slot) {
-    				if (toolbar_slot.p && dirty[0] & /*timeElapsed*/ 16384 | dirty[1] & /*$$scope*/ 8192) {
-    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[44], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
+    				if (toolbar_slot.p && dirty[0] & /*timeElapsed*/ 16384 | dirty[1] & /*$$scope*/ 16384) {
+    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[45], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
     				}
     			} else {
     				if (toolbar_slot_or_fallback && toolbar_slot_or_fallback.p && dirty[0] & /*timeElapsed, actions*/ 16385) {
@@ -5226,7 +5226,7 @@ var app = (function () {
     	};
     }
 
-    // (181:16)        
+    // (203:16)        
     function fallback_block_2(ctx) {
     	let toolbar;
     	let current;
@@ -5272,14 +5272,14 @@ var app = (function () {
     	};
     }
 
-    // (214:4) {#if !isRunning && !isComplete}
+    // (236:4) {#if !isRunning && !isComplete}
     function create_if_block_2(ctx) {
     	let startmessage;
     	let updating_isRunning;
     	let current;
 
     	function startmessage_isRunning_binding(value) {
-    		/*startmessage_isRunning_binding*/ ctx[42].call(null, value);
+    		/*startmessage_isRunning_binding*/ ctx[43].call(null, value);
     	}
 
     	let startmessage_props = {
@@ -5308,7 +5308,7 @@ var app = (function () {
     		p(ctx, dirty) {
     			const startmessage_changes = {};
 
-    			if (dirty[0] & /*isPaused*/ 1024 | dirty[1] & /*$$scope*/ 8192) {
+    			if (dirty[0] & /*isPaused*/ 1024 | dirty[1] & /*$$scope*/ 16384) {
     				startmessage_changes.$$scope = { dirty, ctx };
     			}
 
@@ -5335,7 +5335,7 @@ var app = (function () {
     	};
     }
 
-    // (216:29)            
+    // (238:29)            
     function fallback_block_1(ctx) {
     	let h3;
 
@@ -5376,11 +5376,11 @@ var app = (function () {
     	};
     }
 
-    // (215:6) <StartMessage bind:isRunning>
+    // (237:6) <StartMessage bind:isRunning>
     function create_default_slot_1(ctx) {
     	let current;
-    	const message_slot_template = /*#slots*/ ctx[35].message;
-    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[44], get_message_slot_context);
+    	const message_slot_template = /*#slots*/ ctx[36].message;
+    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[45], get_message_slot_context);
     	const message_slot_or_fallback = message_slot || fallback_block_1(ctx);
 
     	return {
@@ -5399,8 +5399,8 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			if (message_slot) {
-    				if (message_slot.p && dirty[1] & /*$$scope*/ 8192) {
-    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[44], dirty, get_message_slot_changes, get_message_slot_context);
+    				if (message_slot.p && dirty[1] & /*$$scope*/ 16384) {
+    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[45], dirty, get_message_slot_changes, get_message_slot_context);
     				}
     			} else {
     				if (message_slot_or_fallback && message_slot_or_fallback.p && dirty[0] & /*isPaused*/ 1024) {
@@ -5423,7 +5423,7 @@ var app = (function () {
     	};
     }
 
-    // (222:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (244:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5451,7 +5451,7 @@ var app = (function () {
     			const completedmessage_changes = {};
     			if (dirty[0] & /*showConfetti*/ 8) completedmessage_changes.showConfetti = /*showConfetti*/ ctx[3];
 
-    			if (dirty[0] & /*timeElapsed*/ 16384 | dirty[1] & /*$$scope*/ 8192) {
+    			if (dirty[0] & /*timeElapsed*/ 16384 | dirty[1] & /*$$scope*/ 16384) {
     				completedmessage_changes.$$scope = { dirty, ctx };
     			}
 
@@ -5472,7 +5472,7 @@ var app = (function () {
     	};
     }
 
-    // (224:29)            
+    // (246:29)            
     function fallback_block(ctx) {
     	let h3;
     	let t0;
@@ -5515,11 +5515,11 @@ var app = (function () {
     	};
     }
 
-    // (223:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (245:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
-    	const message_slot_template = /*#slots*/ ctx[35].message;
-    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[44], get_message_slot_context_1);
+    	const message_slot_template = /*#slots*/ ctx[36].message;
+    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[45], get_message_slot_context_1);
     	const message_slot_or_fallback = message_slot || fallback_block(ctx);
 
     	return {
@@ -5538,8 +5538,8 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			if (message_slot) {
-    				if (message_slot.p && dirty[1] & /*$$scope*/ 8192) {
-    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[44], dirty, get_message_slot_changes_1, get_message_slot_context_1);
+    				if (message_slot.p && dirty[1] & /*$$scope*/ 16384) {
+    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[45], dirty, get_message_slot_changes_1, get_message_slot_context_1);
     				}
     			} else {
     				if (message_slot_or_fallback && message_slot_or_fallback.p && dirty[0] & /*timeElapsed*/ 16384) {
@@ -5633,6 +5633,7 @@ var app = (function () {
     	let { showStartMessage = true } = $$props;
     	let { showCompleteMessage = true } = $$props;
     	let { showConfetti = true } = $$props;
+    	let { storageKey } = $$props;
     	let { showKeyboard } = $$props;
     	let { keyboardStyle = "outline" } = $$props;
     	let width = 0;
@@ -5658,13 +5659,28 @@ var app = (function () {
     		$$invalidate(15, validated = validateClues(originalClues));
     		$$invalidate(16, clues = originalClues.map(d => ({ ...d })));
     		$$invalidate(17, cells = createCells(originalClues));
+
+    		if (storageKey && typeof localStorage !== "undefined") {
+    			const storedStateString = localStorage.getItem(`svelte-crossword.${storageKey}`);
+
+    			if (storedStateString !== null) {
+    				const storedState = JSON.parse(storedStateString);
+
+    				if (storedState.cells.length === cells.length) {
+    					oldElapsed = storedState.timeElapsed;
+    					$$invalidate(14, timeElapsed = oldElapsed);
+    					$$invalidate(17, cells = storedState.cells);
+    				}
+    			}
+    		}
+
     		reset();
     	};
 
     	function countUp() {
     		startTime = Date.now();
 
-    		$$invalidate(48, interval = setInterval(
+    		$$invalidate(49, interval = setInterval(
     			() => {
     				$$invalidate(14, timeElapsed = Date.now() - startTime + oldElapsed);
     			},
@@ -5678,6 +5694,12 @@ var app = (function () {
     		oldElapsed = timeElapsed;
     		$$invalidate(10, isPaused = true);
     		$$invalidate(9, isRunning = false);
+    	}
+
+    	function saveState() {
+    		if (storageKey && typeof localStorage !== "undefined") {
+    			localStorage.setItem(`svelte-crossword.${storageKey}`, JSON.stringify({ timeElapsed, cells }));
+    		}
     	}
 
     	
@@ -5784,7 +5806,7 @@ var app = (function () {
 
     	function startmessage_isRunning_binding(value) {
     		isRunning = value;
-    		(((($$invalidate(9, isRunning), $$invalidate(20, isComplete)), $$invalidate(48, interval)), $$invalidate(50, percentCorrect)), $$invalidate(17, cells));
+    		(((($$invalidate(9, isRunning), $$invalidate(20, isComplete)), $$invalidate(49, interval)), $$invalidate(51, percentCorrect)), $$invalidate(17, cells));
     	}
 
     	function article_elementresize_handler() {
@@ -5803,9 +5825,10 @@ var app = (function () {
     		if ("showStartMessage" in $$props) $$invalidate(34, showStartMessage = $$props.showStartMessage);
     		if ("showCompleteMessage" in $$props) $$invalidate(2, showCompleteMessage = $$props.showCompleteMessage);
     		if ("showConfetti" in $$props) $$invalidate(3, showConfetti = $$props.showConfetti);
+    		if ("storageKey" in $$props) $$invalidate(35, storageKey = $$props.storageKey);
     		if ("showKeyboard" in $$props) $$invalidate(4, showKeyboard = $$props.showKeyboard);
     		if ("keyboardStyle" in $$props) $$invalidate(5, keyboardStyle = $$props.keyboardStyle);
-    		if ("$$scope" in $$props) $$invalidate(44, $$scope = $$props.$$scope);
+    		if ("$$scope" in $$props) $$invalidate(45, $$scope = $$props.$$scope);
     	};
 
     	let focusedCell;
@@ -5830,10 +5853,10 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty[0] & /*cells*/ 131072) {
-    			 $$invalidate(50, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
+    			 $$invalidate(51, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
     		}
 
-    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 524288) {
+    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 1048576) {
     			 $$invalidate(20, isComplete = percentCorrect == 1);
     		}
 
@@ -5857,7 +5880,7 @@ var app = (function () {
     			 $$invalidate(23, inlineStyles = themes[theme]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*isComplete*/ 1048576 | $$self.$$.dirty[1] & /*interval*/ 131072) {
+    		if ($$self.$$.dirty[0] & /*isComplete*/ 1048576 | $$self.$$.dirty[1] & /*interval*/ 262144) {
     			 if (isComplete) {
     				clearInterval(interval);
     				$$invalidate(9, isRunning = false);
@@ -5868,6 +5891,10 @@ var app = (function () {
     			 if (isRunning) {
     				countUp();
     			}
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells, timeElapsed*/ 147456) {
+    			 (saveState());
     		}
     	};
 
@@ -5907,6 +5934,7 @@ var app = (function () {
     		breakpoint,
     		disableHighlight,
     		showStartMessage,
+    		storageKey,
     		slots,
     		clues_1_focusedCellIndex_binding,
     		clues_1_focusedCell_binding,
@@ -5941,6 +5969,7 @@ var app = (function () {
     				showStartMessage: 34,
     				showCompleteMessage: 2,
     				showConfetti: 3,
+    				storageKey: 35,
     				showKeyboard: 4,
     				keyboardStyle: 5
     			},
@@ -7052,7 +7081,11 @@ var app = (function () {
     		});
 
     	crossword2 = new Crossword({
-    			props: { data: dataOreo, theme: /*theme*/ ctx[1] }
+    			props: {
+    				data: dataOreo,
+    				theme: /*theme*/ ctx[1],
+    				storageKey: "oreo"
+    			}
     		});
 
     	function crossword3_revealed_binding(value) {

@@ -22,6 +22,7 @@
   export let showStartMessage = true;
   export let showCompleteMessage = true;
   export let showConfetti = true;
+  export let storageKey;
   export let showKeyboard;
   export let keyboardStyle = "outline";
 
@@ -50,6 +51,17 @@
     validated = validateClues(originalClues);
     clues = originalClues.map((d) => ({ ...d }));
     cells = createCells(originalClues);
+    if (storageKey && typeof localStorage !== "undefined") {
+      const storedStateString = localStorage.getItem(`svelte-crossword.${storageKey}`);
+      if (storedStateString !== null) {
+        const storedState = JSON.parse(storedStateString);
+        if (storedState.cells.length === cells.length) {
+          oldElapsed = storedState.timeElapsed;
+          timeElapsed = oldElapsed;
+          cells = storedState.cells;
+        }
+      }
+    }
     reset();
   };
 
@@ -67,6 +79,15 @@
     oldElapsed = timeElapsed;
     isPaused = true;
     isRunning = false;
+  }
+
+  function saveState() {
+    if (storageKey && typeof localStorage !== "undefined") {
+      localStorage.setItem(`svelte-crossword.${storageKey}`, JSON.stringify({
+        timeElapsed,
+        cells,
+      }));
+    }
   }
 
   $: data, onDataUpdate();
@@ -87,6 +108,7 @@
     clearInterval(interval);
     isRunning = false;
   };
+  $: cells, timeElapsed, saveState();
 
   onMount(() => {
     isLoaded = true;
