@@ -6,5 +6,6 @@ export default {
 	"bg-color": "#fff",
 	"accent-color": "#efefef",
 	"scrollbar-color": "#cdcdcd",
-	"order": "row"
+	"order": "row",
+	"clue-list-height": "45vh"
 };

@@ -3357,9 +3357,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(p, "class", "svelte-1fbvob");
-    			attr(ul, "class", "svelte-1fbvob");
-    			attr(div, "class", "list svelte-1fbvob");
+    			attr(p, "class", "svelte-uh7iqm");
+    			attr(ul, "class", "svelte-uh7iqm");
+    			attr(div, "class", "list svelte-uh7iqm");
     		},
     		m(target, anchor) {
     			insert(target, p, anchor);
@@ -4847,7 +4847,8 @@ var app = (function () {
     	"bg-color": "#fff",
     	"accent-color": "#efefef",
     	"scrollbar-color": "#cdcdcd",
-    	"order": "row"
+    	"order": "row",
+    	"clue-list-height": "45vh"
     };
 
     var dark = {

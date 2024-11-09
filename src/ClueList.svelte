@@ -31,7 +31,7 @@
 <style>
   .list {
     position: relative;
-    max-height: 37.5vh;
+    max-height: var(--clue-list-height);
     margin-bottom: 2em;
     overflow: auto;
   }
