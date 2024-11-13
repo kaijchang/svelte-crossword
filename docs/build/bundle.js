@@ -759,7 +759,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (15:4) {#each actions as action}
+    // (17:4) {#each actions as action}
     function create_each_block(ctx) {
     	let button;
     	let t0_value = /*action*/ ctx[4].charAt(0).toUpperCase().concat(/*action*/ ctx[4].slice(1)) + "";
@@ -918,6 +918,7 @@ var app = (function () {
     	const dispatch = createEventDispatcher();
     	let { timeElapsed } = $$props;
     	let { actions = ["pause", "clear", "reveal", "check"] } = $$props;
+    	console.log(timeElapsed);
     	const click_handler = action => dispatch("event", action);
 
     	$$self.$$set = $$props => {
@@ -4903,7 +4904,7 @@ var app = (function () {
     	onCheck: /*onCheck*/ ctx[27]
     });
 
-    // (192:0) {#if validated}
+    // (194:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -5228,7 +5229,7 @@ var app = (function () {
     	};
     }
 
-    // (203:16)        
+    // (205:16)        
     function fallback_block_2(ctx) {
     	let toolbar;
     	let current;
@@ -5274,7 +5275,7 @@ var app = (function () {
     	};
     }
 
-    // (236:4) {#if !isRunning && !isComplete}
+    // (238:4) {#if !isRunning && !isComplete}
     function create_if_block_2(ctx) {
     	let startmessage;
     	let updating_isRunning;
@@ -5337,7 +5338,7 @@ var app = (function () {
     	};
     }
 
-    // (238:29)            
+    // (240:29)            
     function fallback_block_1(ctx) {
     	let h3;
 
@@ -5378,7 +5379,7 @@ var app = (function () {
     	};
     }
 
-    // (237:6) <StartMessage bind:isRunning>
+    // (239:6) <StartMessage bind:isRunning>
     function create_default_slot_1(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[36].message;
@@ -5425,7 +5426,7 @@ var app = (function () {
     	};
     }
 
-    // (244:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (246:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5474,7 +5475,7 @@ var app = (function () {
     	};
     }
 
-    // (246:29)            
+    // (248:29)            
     function fallback_block(ctx) {
     	let h3;
     	let t0;
@@ -5517,7 +5518,7 @@ var app = (function () {
     	};
     }
 
-    // (245:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (247:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[36].message;
@@ -5648,7 +5649,7 @@ var app = (function () {
     	let isChecking = false;
     	let revealTimeout;
     	let timeElapsed = 0;
-    	let startTime = Date.now();
+    	let startTime;
     	let oldElapsed = 0;
     	let interval;
     	let originalClues = [];
@@ -5708,6 +5709,7 @@ var app = (function () {
 
     	onMount(() => {
     		$$invalidate(12, isLoaded = true);
+    		startTime = Date.now();
 
     		document.addEventListener("visibilitychange", () => {
     			if (document.hidden) onPause();
@@ -5734,6 +5736,7 @@ var app = (function () {
     	function reset() {
     		$$invalidate(11, isRevealing = false);
     		$$invalidate(13, isChecking = false);
+    		$$invalidate(10, isPaused = false);
     		$$invalidate(8, focusedCellIndex = 0);
     		$$invalidate(7, focusedDirection = "across");
     	}

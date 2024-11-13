@@ -36,7 +36,7 @@
   let isChecking = false;
   let revealTimeout;
   let timeElapsed = 0;
-  let startTime = Date.now();
+  let startTime;
   let oldElapsed = 0;
   let interval;
   let clueCompletion;
@@ -112,6 +112,7 @@
 
   onMount(() => {
     isLoaded = true;
+    startTime = Date.now();
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) onPause();
     });
