@@ -75,7 +75,6 @@
 
   function onPause() {
     if (revealed) return true;
-    clearInterval(interval);
     oldElapsed = timeElapsed;
     isPaused = true;
     isRunning = false;
@@ -101,13 +100,14 @@
   $: cells, (revealed = !clues.filter((d) => !d.isCorrect).length);
   $: stacked = width < breakpoint;
   $: inlineStyles = themeStyles[theme];
+  $: if (isComplete) {
+    isRunning = false;
+  }
   $: if (isRunning) {
     countUp();
-  }
-  $: if (isComplete) {
+  } else {
     clearInterval(interval);
-    isRunning = false;
-  };
+  }
   $: cells, timeElapsed, saveState();
 
   onMount(() => {

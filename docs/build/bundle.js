@@ -4903,7 +4903,7 @@ var app = (function () {
     	onCheck: /*onCheck*/ ctx[27]
     });
 
-    // (195:0) {#if validated}
+    // (197:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -5228,7 +5228,7 @@ var app = (function () {
     	};
     }
 
-    // (206:16)        
+    // (208:16)        
     function fallback_block_2(ctx) {
     	let toolbar;
     	let current;
@@ -5274,7 +5274,7 @@ var app = (function () {
     	};
     }
 
-    // (239:4) {#if !isRunning && !isComplete}
+    // (241:4) {#if !isRunning && !isComplete}
     function create_if_block_2(ctx) {
     	let startmessage;
     	let updating_isRunning;
@@ -5337,7 +5337,7 @@ var app = (function () {
     	};
     }
 
-    // (241:29)            
+    // (243:29)            
     function fallback_block_1(ctx) {
     	let h3;
 
@@ -5378,7 +5378,7 @@ var app = (function () {
     	};
     }
 
-    // (240:6) <StartMessage bind:isRunning>
+    // (242:6) <StartMessage bind:isRunning>
     function create_default_slot_1(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[36].message;
@@ -5425,7 +5425,7 @@ var app = (function () {
     	};
     }
 
-    // (247:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (249:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5474,7 +5474,7 @@ var app = (function () {
     	};
     }
 
-    // (249:29)            
+    // (251:29)            
     function fallback_block(ctx) {
     	let h3;
     	let t0;
@@ -5517,7 +5517,7 @@ var app = (function () {
     	};
     }
 
-    // (248:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (250:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[36].message;
@@ -5692,7 +5692,6 @@ var app = (function () {
 
     	function onPause() {
     		if (revealed) return true;
-    		clearInterval(interval);
     		oldElapsed = timeElapsed;
     		$$invalidate(10, isPaused = true);
     		$$invalidate(9, isRunning = false);
@@ -5703,8 +5702,6 @@ var app = (function () {
     			localStorage.setItem(`svelte-crossword.${storageKey}`, JSON.stringify({ timeElapsed, cells }));
     		}
     	}
-
-    	
 
     	onMount(() => {
     		$$invalidate(12, isLoaded = true);
@@ -5811,7 +5808,7 @@ var app = (function () {
 
     	function startmessage_isRunning_binding(value) {
     		isRunning = value;
-    		(((($$invalidate(9, isRunning), $$invalidate(20, isComplete)), $$invalidate(49, interval)), $$invalidate(51, percentCorrect)), $$invalidate(17, cells));
+    		((($$invalidate(9, isRunning), $$invalidate(20, isComplete)), $$invalidate(51, percentCorrect)), $$invalidate(17, cells));
     	}
 
     	function article_elementresize_handler() {
@@ -5845,6 +5842,10 @@ var app = (function () {
     	let inlineStyles;
 
     	$$self.$$.update = () => {
+    		if ($$self.$$.dirty[0] & /*timeElapsed*/ 16384) {
+    			 console.log({ timeElapsed });
+    		}
+
     		if ($$self.$$.dirty[0] & /*data*/ 1073741824) {
     			 (onDataUpdate());
     		}
@@ -5885,16 +5886,17 @@ var app = (function () {
     			 $$invalidate(23, inlineStyles = themes[theme]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*isComplete*/ 1048576 | $$self.$$.dirty[1] & /*interval*/ 262144) {
+    		if ($$self.$$.dirty[0] & /*isComplete*/ 1048576) {
     			 if (isComplete) {
-    				clearInterval(interval);
     				$$invalidate(9, isRunning = false);
     			}
     		}
 
-    		if ($$self.$$.dirty[0] & /*isRunning*/ 512) {
+    		if ($$self.$$.dirty[0] & /*isRunning*/ 512 | $$self.$$.dirty[1] & /*interval*/ 262144) {
     			 if (isRunning) {
     				countUp();
+    			} else {
+    				clearInterval(interval);
     			}
     		}
 
