@@ -143,6 +143,7 @@
     isRevealing = false;
     isChecking = false;
     isPaused = false;
+    isRunning = false;
     focusedCellIndex = 0;
     focusedDirection = "across";
   }
