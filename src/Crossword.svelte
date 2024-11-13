@@ -141,6 +141,7 @@
   function reset() {
     isRevealing = false;
     isChecking = false;
+    isPaused = false;
     focusedCellIndex = 0;
     focusedDirection = "across";
   }
